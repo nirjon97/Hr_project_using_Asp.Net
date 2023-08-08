@@ -1,0 +1,85 @@
+﻿@model Employee
+
+<form method="post">
+    <input asp-for="EmpId" hidden>
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Update Employee</h2>
+            <hr />
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmpName)
+            @Html.TextBoxFor(model => model.EmpName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EmpName)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender)
+            <select class="form-control" id="Gender" name="Gender">
+                <option value="">Select a gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.Gender)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gross)
+            @Html.TextBoxFor(model => model.Gross, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Gross)
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyId)
+            @Html.DropDownListFor(model => model.CompanyId, (SelectList)ViewBag.Companies, "Select a company", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CompanyId)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShiftId)
+            @Html.DropDownListFor(model => model.ShiftId, (SelectList)ViewBag.Shifts, "Select a shift", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ShiftId)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeptId)
+            @Html.DropDownListFor(model => model.DeptId, (SelectList)ViewBag.Departments, "Select a department", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DeptId)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DesigId)
+            @Html.DropDownListFor(model => model.DesigId, (SelectList)ViewBag.Designations, "Select a designation", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DesigId)
+        </div>
+        <hr></hr>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-controller="Employee" asp-action="Index" class="btn btn-secondary">Back to Employee List</a>
+
+
+    </div>
+</form>
+<script>
+    $(document).ready(function () {
+        // Function to calculate Basic, HRent, Medical, and Others based on Gross
+        $("#gross").on("input", function () {
+            var grossValue = parseFloat($(this).val());
+            if (!isNaN(grossValue)) {
+                var basic = (0.5 * grossValue).toFixed(2);
+                var hRent = (0.3 * grossValue).toFixed(2);
+                var medical = (0.15 * grossValue).toFixed(2);
+                var others = (0.05 * grossValue).toFixed(2);
+
+                $("#basic").val(basic);
+                $("#hrent").val(hRent);
+                $("#medical").val(medical);
+                $("#others").val(others);
+            }
+        });
+    });
+</script>
+

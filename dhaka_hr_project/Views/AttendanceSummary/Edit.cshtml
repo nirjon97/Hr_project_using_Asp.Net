@@ -1,0 +1,65 @@
+﻿@model AttendanceSummary
+
+<form method="post">
+    <input asp-for="Id" hidden>
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create AttendanceSummary</h2>
+            <hr />
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.dtYear, htmlAttributes: new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.dtYear, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.dtYear, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dtMonth, htmlAttributes: new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.dtMonth, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.dtMonth, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyId)
+            @Html.DropDownListFor(model => model.CompanyId, (SelectList)ViewBag.Companies, "Select a company", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CompanyId)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmpId)
+            @Html.DropDownListFor(model => model.EmpId, (SelectList)ViewBag.Employees, "Select an employee", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EmpId)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Present, htmlAttributes: new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.Present, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Present, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Absent, htmlAttributes: new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.Absent, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Absent, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Late, htmlAttributes: new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.Late, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Late, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weekend, htmlAttributes: new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.Weekend, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Weekend, "", new { @class = "text-danger" })
+        </div>
+        <hr></hr>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-controller="AttendanceSummary" asp-action="Index" class="btn btn-secondary">Back to AttendanceSummary List</a>
+
+
+    </div>
+</form>
+

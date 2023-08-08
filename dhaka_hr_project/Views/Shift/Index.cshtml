@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Shift>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Shift List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Shift" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>&nbsp; Create New Shift
+            </a>
+        </div>
+    </div>
+    <br />
+    <br />
+    
+
+</div>
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <tehead>
+
+        <tr>
+
+           
+            <th>
+                Shift Name
+            </th>
+            <th>
+                Shift In
+            </th>
+            <th>
+                Shift Out
+            </th>
+            <th>
+                Shift Late
+            </th>
+            
+            <th></th>
+        </tr>
+    </tehead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                
+                <td>
+                    @obj.ShiftName
+                </td>
+                <td>
+                    @obj.ShiftIn.ToString("HH:mm")
+                </td>
+                <td>
+                    @obj.ShiftOut.ToString("HH:mm")
+                </td>
+                <td>
+                    @obj.ShiftLate.ToString("HH:mm")
+                </td>
+               
+                
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Shift" asp-route-id="@obj.ShiftId" asp-action="Edit"  class="btn btn-info"><i class="bi bi-pencil-square">Edit </i></a>
+                    </div>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Shift" asp-route-id="@obj.ShiftId" asp-action="Delete" class="btn btn-danger"><i class="bi bi-trash-fill">Delete </i></a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

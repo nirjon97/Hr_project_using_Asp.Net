@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Salary>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Salary List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Salary" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>&nbsp; Create New Salary
+            </a>
+        </div>
+    </div>
+    <br />
+    <br />
+    
+
+</div>
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <tehead>
+
+        <tr>
+
+            <th>
+                Employee Name
+            </th>
+            <th>
+                year
+            </th>
+            <th>
+                Month
+            </th>
+            <th>
+                Gross
+            </th>
+            <th>
+                Basic
+            </th>
+            <th>
+                House Rent
+            </th>
+            <th>
+                Medical
+            </th>
+            <th>
+                Absent Amount
+            </th>
+            <th>
+                PayableAmount
+            </th>
+            <th>
+                IsPaid
+            </th>
+            <th>
+                PaidAmount
+            </th>
+            
+            <th></th>
+        </tr>
+    </tehead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>
+                    @obj.Emp.EmpName
+                </td>
+                <td>
+                    @obj.dtYear
+                </td>
+                <td>
+                    @obj.dtMonth
+                </td>
+                <td>
+                    @obj.Gross
+                </td>
+                <td>
+                    @obj.Basic
+                </td>
+                <td>
+                    @obj.HRent
+                </td>
+                <td>
+                    @obj.Medical
+                </td>
+                <td>
+                    @obj.AbsentAmount
+                </td>
+                <td>
+                    @obj.PayableAmount
+                </td>
+                <td>
+                    @obj.IsPaid
+                </td>
+                <td>
+                    @obj.PaidAmount
+                </td>
+               
+                
+                <td>
+                    
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Salary" asp-route-id="@obj.SalId" asp-action="Delete" class="btn btn-danger"><i class="bi bi-trash-fill">Delete </i></a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

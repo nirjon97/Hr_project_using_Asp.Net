@@ -1,0 +1,25 @@
+﻿@model Salary
+
+<form method="post" asp-action="Delete">
+    <input asp-for= "SalId" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Salary List</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="EmpId">Employee Id: </label>
+            <input asp-for="EmpId" disabled class="form-control"></input>
+            <span asp-validation-for="EmpId" class="btn-danger"></span>
+        </div>
+        
+
+
+        <button type="submit" class="btn btn-primary">Delete</button>
+        <a asp-controller="Salary" asp-action="Index" class="btn btn-secondary">Bact to Salary List</a>
+
+
+    </div>
+</form>
+
+

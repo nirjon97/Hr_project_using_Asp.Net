@@ -1,0 +1,25 @@
+﻿@model Shift
+
+<form method="post" asp-action="Delete">
+    <input asp-for= "ShiftId" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Shift</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="ShiftName">Shift Name: </label>
+            <input asp-for="ShiftName" disabled class="form-control"></input>
+            <span asp-validation-for="ShiftName" class="btn-danger"></span>
+        </div>
+        
+
+
+        <button type="submit" class="btn btn-primary">Delete</button>
+        <a asp-controller="Shift" asp-action="Index" class="btn btn-secondary">Bact to Shift List</a>
+
+
+    </div>
+</form>
+
+
